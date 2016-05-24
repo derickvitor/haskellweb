@@ -1,0 +1,24 @@
+formLogin :: Form (Text,Text)
+formLogin = renderDivs $ (,) <$>
+           areq textField "Login: " Nothing <*>
+           areq passwordField "Senha: " Nothing
+           
+getLoginR :: Handler Html
+getLoginR = do
+           (widget, enctype) <- generateFormPost formLogin
+           defaultLayout [whamlet|
+                 <form method=post enctype=#{enctype} action=@{LoginR}>
+                     ^{widget}
+                     <input type="submit" value="Login">
+           |]
+
+postLoginR :: Handler Html
+postLoginR = do
+           ((result, _), _) <- runFormPost formLogin
+           case result of 
+               FormSuccess ("admin","admin") -> setSession "_ID" "admin" >> redirect AdminR
+               FormSuccess (login,senha) -> do 
+                   user <- runDB $ selectFirst [UsersLogin ==. login, UsersSenha ==. senha] []
+                   case user of
+                       Nothing -> redirect LoginR
+                       Just (Entity pid u) -> setSession "_ID" (pack $ show $ fromSqlKey pid) >> redirect (PerfilR pid)
