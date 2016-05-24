@@ -1,0 +1,8 @@
+share [mkPersist sqlSettings] [persistLowerCase|
+Clientes json
+   nome Text
+   cpf Text
+   endereco Text
+   cep Text
+   deriving Show
+|]
