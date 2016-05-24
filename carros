@@ -1,0 +1,11 @@
+share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
+Carros json
+   placa Text
+   renavam Text
+   chassi Text
+   ano Text
+   marca Text
+   modelo Text
+   corPredominante Text
+   deriving Show
+|]
