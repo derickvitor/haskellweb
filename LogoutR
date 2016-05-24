@@ -1,0 +1,6 @@
+getLogoutR :: Handler Html
+getLogoutR = do
+     deleteSession "_ID"
+     defaultLayout [whamlet| 
+         <h1> Deslogado!
+     |]
