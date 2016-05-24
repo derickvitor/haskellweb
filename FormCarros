@@ -1,0 +1,9 @@
+formCarro :: Form Carros
+formCarro = renderDivs $ Carros <$>
+           areq textField "Placa: " Nothing <*>
+           areq textField "Renavam: " Nothing <*>
+           areq textField "Chassi: " Nothing <*>
+           areq textField "Ano: " Nothing <*>
+           areq textField "Marca: " Nothing <*>
+           areq textField "Modelo: " Nothing <*>
+           areq textField "Cor Predominante: " Nothing 
