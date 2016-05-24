@@ -1,0 +1,7 @@
+share [mkPersist sqlSettings] [persistLowerCase|
+Users json
+   nome Text
+   login Text
+   senha Text
+   deriving Show
+|]
