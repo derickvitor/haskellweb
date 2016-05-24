@@ -1,0 +1,4 @@
+getAdminR :: Handler Html
+getAdminR = defaultLayout [whamlet|
+    <h1> Bem-vindo!
+|]
