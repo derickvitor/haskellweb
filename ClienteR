@@ -1,0 +1,21 @@
+formCliente :: Form Clientes
+formCliente = renderDivs $ Clientes <$>
+           areq textField "Nome: " Nothing <*>
+           areq textField "CPF: " Nothing <*>
+           areq textField "Endereço: " Nothing <*>
+           areq textField "CEP: " Nothing
+
+getClienteR :: Handler Html
+getClienteR = do
+           (widget, enctype) <- generateFormPost formCliente
+           defaultLayout [whamlet|
+                 <form method=post enctype=#{enctype} action=@{ClienteR}>
+                     ^{widget}
+                     <input type="submit" value="Enviar">
+           |]
+           
+postClienteR :: Handler ()
+postClienteR = do
+    cliente <- requireJsonBody :: Handler Clientes
+    runDB $ insert cliente
+    sendResponse (object [pack "resp" .= pack "Cadastrado"])
