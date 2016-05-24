@@ -1,0 +1,4 @@
+getErroR :: Handler Html
+getErroR = defaultLayout [whamlet|
+     <h1> Erro!
+|]
