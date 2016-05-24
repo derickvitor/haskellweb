@@ -1,0 +1,21 @@
+formUserR :: Form User
+formCarro = renderDivs $ Users <$>
+           areq textField "Nome: " Nothing <*>
+           areq textField "Login: " Nothing <*>
+           areq textField "Senha: " Nothing 
+
+getUserR :: Handler Html
+getUserR = do
+           (widget, enctype) <- generateFormPost formUserR
+           defaultLayout [whamlet|
+                 <form method=post enctype=#{enctype} action=@{UserR}>
+                     ^{widget}
+                     <input type="submit" value="Enviar">
+           |]
+           
+postUserR :: Handler Html
+postUserR = do
+           ((result, _), _) <- runFormPost formUserR
+           case result of 
+               FormSuccess user -> (runDB $ insert user) >>= \piid -> redirect (PerfilR piid)
+               _ -> redirect ErroR
