@@ -1,0 +1,22 @@
+instance Yesod Pagina where
+    authRoute _ = Just LoginR
+    
+    isAuthorized LoginR _ = return Authorized
+    isAuthorized CarroR _ = return Authorized
+    isAuthorized AdminR _ = isAdmin
+    isAuthorized ClienteR _ = isAdmin
+    isAuthorized UserR _ = isAdmin
+    isAuthorized _ _ = isUser
+
+isUser = do
+    mu <- lookupSession "_ID"
+    return $ case mu of
+        Nothing -> AuthenticationRequired
+        Just _ -> Authorized
+    
+isAdmin = do
+    mu <- lookupSession "_ID"
+    return $ case mu of
+        Nothing -> AuthenticationRequired
+        Just "admin" -> Authorized 
+        Just _ -> Unauthorized "Voce precisa ser admin para entrar aqui"
