@@ -1,0 +1,8 @@
+mkYesod "Pagina" [parseRoutes|
+/ HomeR GET
+/login LoginR GET POST
+/logout LogoutR GET
+/admin AdminR GET
+/perfil/#UsersId PerfilR GET
+/carro CarroR GET
+|]
