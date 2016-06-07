@@ -1,0 +1,5 @@
+getQuemR :: Handler Html
+getQuemR = defaultLayout $ do
+            addStylesheet $ StaticR sta_css
+            $(whamletFile "templates/quemsomos.hamlet")
+            addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
