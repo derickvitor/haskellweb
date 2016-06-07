@@ -1,21 +1,34 @@
-formUserR :: Form User
-formCarro = renderDivs $ Users <$>
+formUser :: Form Users
+formUser = renderDivs $ Users <$>
            areq textField "Nome: " Nothing <*>
            areq textField "Login: " Nothing <*>
-           areq textField "Senha: " Nothing 
+           areq passwordField "Senha: " Nothing
 
 getUserR :: Handler Html
 getUserR = do
-           (widget, enctype) <- generateFormPost formUserR
-           defaultLayout [whamlet|
-                 <form method=post enctype=#{enctype} action=@{UserR}>
-                     ^{widget}
-                     <input type="submit" value="Enviar">
-           |]
+            (widget, enctype) <- generateFormPost formUser
+            defaultLayout $ do
+                addStylesheet $ StaticR sta_css
+                $(whamletFile "templates/cadastraruser.hamlet")
+                addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
+            
            
 postUserR :: Handler Html
 postUserR = do
-           ((result, _), _) <- runFormPost formUserR
+           ((result, _), _) <- runFormPost formUser
            case result of 
-               FormSuccess user -> (runDB $ insert user) >>= \piid -> redirect (PerfilR piid)
-               _ -> redirect ErroR
+                FormSuccess user -> do
+                    runDB $ insert user
+                    defaultLayout $ do
+                        addStylesheet $ StaticR sta_css
+                        $(whamletFile "templates/cadastroconcluido.hamlet")
+                        addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
+                _ -> redirect ErroR
+                
+getListaUsersR :: Handler Html
+getListaUsersR = do
+                users <- runDB $ selectList [] [Asc UsersId]
+                defaultLayout $ do
+                    addStylesheet $ StaticR sta_css
+                    $(whamletFile "templates/listarusuarios.hamlet")
+                    addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
