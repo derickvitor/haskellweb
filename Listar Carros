@@ -1,0 +1,15 @@
+getListaCarpR :: Handler Html
+getListaCarpR = do
+                cars <- runDB $ selectList [] [Asc CarrosPlaca]
+                defaultLayout $ do
+                    addStylesheet $ StaticR sta_css
+                    $(whamletFile "templates/listarcarrop.hamlet")
+                    addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
+                    
+getListaCarhR :: Handler Html
+getListaCarhR = do
+                cars <- runDB $ selectList [] [Asc CarrosPlaca]
+                defaultLayout $ do
+                    addStylesheet $ StaticR sta_css
+                    $(whamletFile "templates/listarcarroh.hamlet")
+                    addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
