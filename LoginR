@@ -6,11 +6,10 @@ formLogin = renderDivs $ (,) <$>
 getLoginR :: Handler Html
 getLoginR = do
            (widget, enctype) <- generateFormPost formLogin
-           defaultLayout [whamlet|
-                 <form method=post enctype=#{enctype} action=@{LoginR}>
-                     ^{widget}
-                     <input type="submit" value="Login">
-           |]
+           defaultLayout $ do
+                addStylesheet $ StaticR sta_css
+                $(whamletFile "templates/login.hamlet")
+                addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
 
 postLoginR :: Handler Html
 postLoginR = do
@@ -21,4 +20,4 @@ postLoginR = do
                    user <- runDB $ selectFirst [UsersLogin ==. login, UsersSenha ==. senha] []
                    case user of
                        Nothing -> redirect LoginR
-                       Just (Entity pid u) -> setSession "_ID" (pack $ show $ fromSqlKey pid) >> redirect (PerfilR pid)
+                       Just (Entity pid u) -> setSession "_ID" (pack $ show $ fromSqlKey pid) >> redirect (PainelR pid)
