@@ -1,4 +1,9 @@
     <h1 class="title"> DET Concessionária
     <ul>
+        <li> <a href=@{HomeR}> Início </a> </li>
         <li> <a href=@{ListaCarhR}> Carros </a> </li>
+        <li> <a href=@{QuemR}> Quem Somos </a> </li>
+        <li> <a href=@{ContatoR}> Contato </a> </li>
         <li> <a href=@{LoginR}> Painel </a> </li>
+        
+    <h2 class="texto"> Bem vindos a DET Concessionária
