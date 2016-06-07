@@ -1,8 +1,8 @@
-share [mkPersist sqlSettings] [persistLowerCase|
 Clientes json
    nome Text
    cpf Text
+   telefone Text 
+   email Text
    endereco Text
-   cep Text
+   cep Text sqltype=varchar(8)
    deriving Show
-|]
