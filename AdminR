@@ -1,4 +1,6 @@
-getAdminR :: Handler Html
-getAdminR = defaultLayout [whamlet|
-    <h1> Bem-vindo!
-|]
+getAdminR ::Handler Html
+getAdminR = 
+        defaultLayout $ do
+            addStylesheet $ StaticR sta_css
+            $(whamletFile "templates/paineladmin.hamlet")
+            addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
