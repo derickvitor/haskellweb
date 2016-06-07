@@ -1,0 +1,7 @@
+    <h1 class="title"> DET Concessionária
+    
+    <form class="login" method=post enctype=#{enctype} action=@{LoginR}>
+        ^{widget}
+        <br>
+        <input class="btnlog" type="submit" value="Entrar">
+    <a class="form" style="left: 30%; top: 50%" href=@{HomeR}><input class="btn" type="button" value="Voltar"></a>
