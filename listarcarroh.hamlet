@@ -1,0 +1,16 @@
+    <h1 class="title"> DET Concessionária
+    <ul>
+        <li> <a href=@{ListaCarhR}> Carros </a> </li>
+        <li> <a href=@{LoginR}> Painel </a> </li>
+        
+    <h2 class="texto"> Lista de carros cadastrados:
+        $forall Entity cid cent <- cars
+            <p> Placa: #{carrosPlaca cent}
+            <p> Renavam: #{carrosRenavam cent}
+            <p> Chassi: #{carrosChassi cent}
+            <p> Ano: #{carrosAno cent}
+            <p> Marca: #{carrosMarca cent}
+            <p> Modelo: #{carrosModelo cent}
+            <p> Cor: #{carrosCorPredominante cent}
+            <p> Preço: #{carrosPreco cent}
+            <p>_________________________________________
