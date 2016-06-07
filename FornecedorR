@@ -1,0 +1,29 @@
+formFornecedor :: Form Fornecedores
+formFornecedor = renderDivs $ Fornecedores <$>
+           areq textField "Nome: " Nothing <*>
+           areq textField "Cnpj: " Nothing <*>
+           areq textField "Marca: " Nothing <*>
+           areq textField "Telefone: " Nothing <*>
+           areq textField "Email: " Nothing <*>
+           areq textField "Endereço: " Nothing <*>
+           areq textField "CEP: " Nothing
+
+getFornecedorR :: Handler Html
+getFornecedorR = do
+           (widget, enctype) <- generateFormPost formFornecedor
+           defaultLayout $ do
+                addStylesheet $ StaticR sta_css
+                $(whamletFile "templates/cadastrarfornecedor.hamlet")
+                addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
+           
+postFornecedorR :: Handler Html
+postFornecedorR = do
+           ((result, _), _) <- runFormPost formFornecedor
+           case result of 
+                FormSuccess fornecedor -> do
+                    runDB $ insert fornecedor
+                    defaultLayout $ do
+                        addStylesheet $ StaticR sta_css
+                        $(whamletFile "templates/cadastroconcluido.hamlet")
+                        addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
+                _ -> redirect ErroR
