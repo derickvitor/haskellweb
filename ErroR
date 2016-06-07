@@ -1,4 +1,5 @@
 getErroR :: Handler Html
-getErroR = defaultLayout [whamlet|
-     <h1> Erro!
-|]
+getErroR = defaultLayout $ do
+                addStylesheet $ StaticR sta_css
+                $(whamletFile "templates/erro.hamlet")
+                addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
