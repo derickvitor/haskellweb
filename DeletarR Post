@@ -1,0 +1,19 @@
+postDeletarcaR :: CarrosId -> Handler Html
+postDeletarcaR cid = do
+     runDB $ delete cid
+     redirect ListaCarpR
+     
+postDeletarclR :: ClientesId -> Handler Html
+postDeletarclR cid = do
+     runDB $ delete cid
+     redirect ListaCliR
+     
+postDeletarfR :: FornecedoresId -> Handler Html
+postDeletarfR fid = do
+     runDB $ delete fid
+     redirect ListaFornR
+
+postDeletaruR :: UsersId -> Handler Html
+postDeletaruR uid = do
+     runDB $ delete uid
+     redirect ListaUsersR
