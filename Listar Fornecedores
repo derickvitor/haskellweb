@@ -1,0 +1,7 @@
+getListaFornR :: Handler Html
+getListaFornR = do
+                    forn <- runDB $ selectList [] [Asc FornecedoresNomef]
+                    defaultLayout $ do
+                        addStylesheet $ StaticR sta_css
+                        $(whamletFile "templates/listarfornecedor.hamlet")
+                        addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
