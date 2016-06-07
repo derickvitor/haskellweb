@@ -1,0 +1,7 @@
+getListaCliR :: Handler Html
+getListaCliR = do
+                 cli <- runDB $ selectList [] [Asc ClientesNome]
+                 defaultLayout $ do
+                    addStylesheet $ StaticR sta_css
+                    $(whamletFile "templates/listarcliente.hamlet")
+                    addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
