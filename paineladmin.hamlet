@@ -1,0 +1,13 @@
+    <h1 class="title"> DET Concessionária
+    <p class="texto"> Bem-vindo, Administrador!
+    <ul>
+        <li> <a href=@{ListaCarpR}> Carros </a> </li>
+        <li> <a href=@{ListaCliR}> Clientes </a> </li>
+        <li> <a href=@{ListaFornR}> Fornecedores </a> </li>
+        <li> <a href=@{ListaUsersR}> Usuários </a> </li>
+        <li><br> </li>
+        <li> <a href=@{UserR}> Cadastrar Usuário </a> </li>
+        <li> <a href=@{CarroR}> Cadastrar Carro </a> </li>
+        <li> <a href=@{ClienteR}> Cadastrar Cliente </a> </li>
+        <li> <a href=@{FornecedorR}> Cadastrar Fornecedor </a> </li>
+        <li> <a href=@{LogoutR}> Deslogar </a> </li>
