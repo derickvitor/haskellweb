@@ -1,6 +1,7 @@
 getLogoutR :: Handler Html
 getLogoutR = do
      deleteSession "_ID"
-     defaultLayout [whamlet| 
-         <h1> Deslogado!
-     |]
+     defaultLayout $ do
+                addStylesheet $ StaticR sta_css
+                $(whamletFile "templates/logout.hamlet")
+                addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
