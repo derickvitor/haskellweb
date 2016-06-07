@@ -1,0 +1,4 @@
+    <h1 class="title"> DET Concessionária
+    
+    <h2 class="texto" style="left: 49%; top: 30%"> Deslogado!
+    <a class="form" style="left: 30%; top: 50%" href=@{HomeR}><input class="btn" type="button" value="Voltar"></a>
