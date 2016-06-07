@@ -1,0 +1,9 @@
+Fornecedores json
+   nomef Text
+   marca Text
+   cnpj Text
+   telefone Text
+   email Text
+   endereco Text
+   cep Text sqltype=varchar(8)
+   deriving Show
