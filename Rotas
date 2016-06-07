@@ -2,7 +2,21 @@ mkYesod "Pagina" [parseRoutes|
 / HomeR GET
 /login LoginR GET POST
 /logout LogoutR GET
+/painel/#UsersId PainelR GET
+/cadastrocarros CarroR GET POST
+/cadastrousers UserR GET POST
+/cadastroclientes ClienteR GET POST
+/cadastrofornecedores FornecedorR GET POST
+/listarcarrosp ListaCarpR GET
+/listarcarrosh ListaCarhR GET
+/listarclientes ListaCliR GET
+/listarfornecedores ListaFornR GET
+/listarusuarios ListaUsersR GET
+/erro ErroR GET
+/static StaticR Static getStatic
 /admin AdminR GET
-/perfil/#UsersId PerfilR GET
-/carro CarroR GET
+/deletarca/#CarrosId DeletarcaR POST
+/deletarcl/#ClientesId DeletarclR POST
+/deletarf/#FornecedoresId DeletarfR POST
+/deletaru/#UsersId DeletaruR POST
 |]
