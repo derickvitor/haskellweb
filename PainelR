@@ -1,0 +1,7 @@
+getPainelR :: UsersId -> Handler Html
+getPainelR uid = do
+        user <- runDB $ get404 uid
+        defaultLayout $ do
+            addStylesheet $ StaticR sta_css
+            $(whamletFile "templates/painel.hamlet")
+            addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
