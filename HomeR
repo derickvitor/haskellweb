@@ -1,0 +1,5 @@
+getHomeR :: Handler Html
+getHomeR = defaultLayout $ do
+            addStylesheet $ StaticR sta_css
+            $(whamletFile "templates/home.hamlet")
+            addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"

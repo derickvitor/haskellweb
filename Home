@@ -1,4 +1,0 @@
-    <h1 class="title"> DET Concessionária
-    <ul>
-        <li> <a href=@{ListaCarhR}> Carros </a> </li>
-        <li> <a href=@{LoginR}> Painel </a> </li>
