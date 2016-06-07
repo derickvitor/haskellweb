@@ -1,11 +1,10 @@
-share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 Carros json
-   placa Text
+   placa Text sqltype=varchar(7)
    renavam Text
    chassi Text
-   ano Text
+   ano Text sqltype=varchar(4)
    marca Text
    modelo Text
    corPredominante Text
+   preco Text 
    deriving Show
-|]
