@@ -6,4 +6,5 @@ formCarro = renderDivs $ Carros <$>
            areq textField "Ano: " Nothing <*>
            areq textField "Marca: " Nothing <*>
            areq textField "Modelo: " Nothing <*>
-           areq textField "Cor Predominante: " Nothing 
+           areq textField "Cor Predominante: " Nothing <*>
+           areq textField "Preço: " Nothing
