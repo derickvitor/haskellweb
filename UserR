@@ -24,11 +24,3 @@ postUserR = do
                         $(whamletFile "templates/cadastroconcluido.hamlet")
                         addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
                 _ -> redirect ErroR
-                
-getListaUsersR :: Handler Html
-getListaUsersR = do
-                users <- runDB $ selectList [] [Asc UsersId]
-                defaultLayout $ do
-                    addStylesheet $ StaticR sta_css
-                    $(whamletFile "templates/listarusuarios.hamlet")
-                    addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto&subset=latin,greek"
